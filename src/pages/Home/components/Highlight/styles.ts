@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const HighlightContainer = styled.main`
     margin-top: 6rem;
+    height: 34rem;
     display: flex;
     justify-content: space-between;
-    
     .content {
         h1 {
             font-family: "Baloo 2";
@@ -27,6 +27,7 @@ export const HighlightContainer = styled.main`
             div {
                 display: flex;
                 gap: .4rem;
+                color: ${props => props.theme["base-text"]};
                 span {
                     color: ${props => props.theme["white"]};
                     background-color: ${props => props.theme["purple"]};

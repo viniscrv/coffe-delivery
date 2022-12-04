@@ -11,6 +11,16 @@ export function CoffesList() {
                 <CoffeCard />
                 <CoffeCard />
                 <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
+                <CoffeCard />
             </div>
         </CoffesListContainer>
     )

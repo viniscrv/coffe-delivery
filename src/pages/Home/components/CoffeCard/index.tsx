@@ -1,6 +1,7 @@
 import { Plus, Minus, ShoppingCart } from "phosphor-react";
 import tradicional from "../../../../assets/coffes/tradicional.png";
 import { CoffeCardContainer } from "./style";
+import { NavLink } from "react-router-dom";
 
 
 export function CoffeCard() {
@@ -17,9 +18,10 @@ export function CoffeCard() {
                         <span>1</span> 
                     <button><Plus /></button> 
                 </div>
-                <button className="btn-cart">
+
+                <NavLink to="/checkout" className="btn-cart">
                     <ShoppingCart weight="fill" size={18}/>
-                </button>
+                </NavLink>
             </footer>
         </CoffeCardContainer>
     );

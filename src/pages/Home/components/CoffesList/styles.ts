@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CoffesListContainer = styled.div`
-    margin-top: 2rem;
     h2 {
         margin-bottom: 2rem;
         font-size: 2rem;

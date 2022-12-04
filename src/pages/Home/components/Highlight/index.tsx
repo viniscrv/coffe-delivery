@@ -2,7 +2,6 @@ import { HighlightContainer } from "./styles";
 import highlightImage from "../../../../assets/highlightImage.png";
 import { ShoppingCart } from "phosphor-react";
 
-
 export function Highlight() {
     return (
         <HighlightContainer>
