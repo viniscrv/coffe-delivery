@@ -25,4 +25,12 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
     }
 
+    input {
+        padding: .6rem;
+        background-color: ${props => props.theme["base-input"]};
+        color: ${props => props.theme["base-label"]};
+        border: 2px solid ${props => props.theme["base-hover"]};
+        border-radius: 4px;
+    }
+
 `

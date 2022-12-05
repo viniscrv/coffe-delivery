@@ -1,8 +1,12 @@
-
-
+import { ClientCart } from "./components/ClientCart";
+import { ClientData } from "./components/ClientData";
+import { CheckoutContainer } from "./styles";
 
 export function Checkout() {
     return (
-        <div>Checkout</div>
+        <CheckoutContainer>
+            <ClientData/>
+            <ClientCart/>
+        </CheckoutContainer>
     );
 }

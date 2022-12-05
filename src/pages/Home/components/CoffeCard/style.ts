@@ -60,7 +60,6 @@ export const CoffeCardContainer = styled.div`
             color: ${props => props.theme["base-title"]};
             padding: .4rem;
             border-radius: 8px;
-            display: flex;
             gap: .6rem;
             button {
                 background-color: ${props => props.theme["base-button"]};
@@ -76,6 +75,9 @@ export const CoffeCardContainer = styled.div`
             padding: .4rem;
             border: 0;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
         }
     }
