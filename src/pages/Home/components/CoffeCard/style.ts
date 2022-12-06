@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const CoffeCardContainer = styled.div`
 
     background-color: ${props => props.theme["base-card"]};
@@ -11,24 +10,30 @@ export const CoffeCardContainer = styled.div`
     border-radius: 6% 18%;
     gap: .8rem;
     padding: 1rem 0;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 
     img {
         width: min-content;
         margin-top: -30px;
     }
-    .tag {
-        font-size: .8rem;
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .4rem;
+        .tag {
+        font-size: .7rem;
         font-weight: bold;
         background-color: ${props => props.theme["yellow-light"]};
         color: ${props => props.theme["yellow-dark"]};
         padding: .6rem;
         border-radius: 8px;
+        }
     }
     strong {
         font-family: "Baloo 2", sans-serif;
         font-size: 1.2rem;
         font-weight: bold;
+        line-height: 1.6;
         color: ${props => props.theme["base-subtitle"]};
     }
     p {

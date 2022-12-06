@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HighlightContainer = styled.main`
     margin-top: 6rem;
-    height: 34rem;
+    height: 32rem;
     display: flex;
     justify-content: space-between;
     .content {

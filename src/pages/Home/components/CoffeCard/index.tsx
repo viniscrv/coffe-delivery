@@ -1,18 +1,30 @@
 import { Plus, Minus, ShoppingCart } from "phosphor-react";
-import tradicional from "../../../../assets/coffes/tradicional.png";
 import { CoffeCardContainer } from "./style";
 import { NavLink } from "react-router-dom";
 
+interface CoffeCardProps {
+    image: string;
+    category: string[];
+    title: string;
+    description: string;
+    price: number;
+}
 
-export function CoffeCard() {
+export function CoffeCard( {image, category, title, description, price} : CoffeCardProps) {
     return(
         <CoffeCardContainer>
-            <img src={tradicional} />
-            <span className="tag">TRADICIONAL</span>
-            <strong>Expresso Tradicional</strong>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
+            <img src={image} />
+            <div>
+                {category.map(item => {
+                    return (
+                        <span className="tag">{item}</span>
+                    );
+                })}
+            </div>
+            <strong>{title}</strong>
+            <p>{description}</p>
             <footer>
-                <span className="price">9,90</span>
+                <span className="price">{price}</span>
                 <div className="quantity-control">
                     <button><Minus /></button>
                         <span>1</span> 
