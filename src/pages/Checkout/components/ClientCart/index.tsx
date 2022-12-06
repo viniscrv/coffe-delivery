@@ -10,13 +10,21 @@ export function ClientCart() {
             <h2>Cafés selecionados</h2>
             <CartContainer>
                 <div className="CartProducts">
-                    <img src={coffeExemple} />
                     <div>
-                        Expresso tradicional
-                        <div className="quantity-control">
-                            <button><Minus /></button>
-                                <span>1</span> 
-                            <button><Plus /></button>
+                        <img src={coffeExemple} />
+                        <div className="product">
+                            Expresso tradicional
+                            <div>
+                                <div className="quantity-control">
+                                    <button><Minus /></button>
+                                        <span>1</span>
+                                    <button><Plus /></button>
+                                </div>
+                                <button className="remove" >
+                                    <span><Trash size={16}/></span>
+                                    REMOVER
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <span>R$ 9,90</span>

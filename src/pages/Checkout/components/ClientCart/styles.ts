@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const ClientCartContainer = styled.div`
     h2 {
         font-family: "Baloo 2", sans-serif;
@@ -15,33 +13,58 @@ export const CartContainer = styled.div`
     background-color: ${props => props.theme["base-card"]};
     padding: 2rem 4rem;
     border-radius: 6px 44px;
-    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     .CartProducts {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         gap: 1.2rem;
-      
+
+        img {
+            width: 70px;
+            height: auto;
+        }
         div {
             display: flex;
-            flex-direction: column;
-            gap: .5rem;
-            color: ${props => props.theme["base-subtitle"]};
-            .quantity-control {
-                background-color: ${props => props.theme["base-button"]};
-                color: ${props => props.theme["base-title"]};
-                width: 4.5rem;
+            gap: .6rem;
+            .product {
+                color: ${props => props.theme["base-subtitle"]};
                 display: flex;
-                flex-direction: row;
-                padding: .4rem;
-                border-radius: 8px;
-                gap: .6rem;
-                button {
+                flex-direction: column;
+                gap: .7rem;
+                div {
+                    .quantity-control {
                     background-color: ${props => props.theme["base-button"]};
-                    color: ${props => props.theme["purple"]};
-                    border: 0;
-                    cursor: pointer;
+                    color: ${props => props.theme["base-title"]};
+                    width: 4.5rem;
+                    display: flex;
+                    flex-direction: row;
+                    padding: .6rem;
+                    border-radius: 8px;
+                    gap: .6rem;
+                        button {
+                            background-color: ${props => props.theme["base-button"]};
+                            color: ${props => props.theme["purple"]};
+                            border: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .remove {
+                        background-color: ${props => props.theme["base-button"]};
+                        color: ${props => props.theme["base-text"]};
+                        font-size: 0.75rem;
+                        display: flex;
+                        align-items: center;
+                        padding: .6rem ;
+                        gap: .2rem;
+                        border: 0;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        span {
+                            color: ${props => props.theme["purple"]};
+                        }
+                    }
                 }
             }
         }
@@ -70,6 +93,7 @@ export const CartContainer = styled.div`
         }
 
         button {
+            margin-top: 1.25rem;
             padding: 1rem;
             border-radius: 6px;
             border: 0;
