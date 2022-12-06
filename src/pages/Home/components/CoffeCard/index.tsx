@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 
 interface CoffeCardProps {
+    id: string
     image: string;
     category: string[];
     title: string;
@@ -11,7 +12,7 @@ interface CoffeCardProps {
     price: number;
 }
 
-export function CoffeCard( {image, category, title, description, price} : CoffeCardProps) {
+export function CoffeCard( {id, image, category, title, description, price} : CoffeCardProps) {
 
     const { handleAddNewProductAtCart } = useContext(CartContext);
     
@@ -31,7 +32,7 @@ export function CoffeCard( {image, category, title, description, price} : CoffeC
 
     function submitProductsAtCart() {
 
-        handleAddNewProductAtCart(priceTotal);
+        handleAddNewProductAtCart({id, priceTotal, quantity, image, title, price});
         setQuantity(1);
     }
 

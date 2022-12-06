@@ -1,5 +1,4 @@
 import { CartContainer, ClientCartContainer } from "./styles";
-import coffeExemple from "../../../../assets/coffes/tradicional.png"
 import { Minus, Plus, Trash } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
@@ -7,33 +6,38 @@ import { CartContext } from "../../../../contexts/CartContext";
 
 export function ClientCart() {
 
-    const { total } = useContext(CartContext);
-
+    const { total, productsInCart } = useContext(CartContext);
+    
     return (
         <ClientCartContainer>
 
             <h2>Cafés selecionados</h2>
             <CartContainer>
-                <div className="CartProducts">
-                    <div>
-                        <img src={coffeExemple} />
-                        <div className="product">
-                            Expresso tradicional
+
+                {productsInCart.map((product: any) => {
+                    return (
+                        <div className="CartProducts" key={product.title}>
                             <div>
-                                <div className="quantity-control">
-                                    <button><Minus /></button>
-                                        <span>1</span>
-                                    <button><Plus /></button>
+                                <img src={product.image} />
+                                <div className="product">
+                                    {product.title}
+                                    <div>
+                                        <div className="quantity-control">
+                                            <button><Minus /></button>
+                                                <span>{product.quantity}</span>
+                                            <button><Plus /></button>
+                                        </div>
+                                        <button className="remove" >
+                                            <span><Trash size={16}/></span>
+                                            REMOVER
+                                        </button>
+                                    </div>
                                 </div>
-                                <button className="remove" >
-                                    <span><Trash size={16}/></span>
-                                    REMOVER
-                                </button>
                             </div>
+                            <span>R$ {product.price}</span>
                         </div>
-                    </div>
-                    <span>R$ 9,90</span>
-                </div>
+                    );
+                })}
 
                 <div className="confirmOrder">
                     <div>

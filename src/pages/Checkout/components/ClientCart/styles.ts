@@ -20,6 +20,7 @@ export const CartContainer = styled.div`
         display: flex;
         justify-content: space-between;
         gap: 1.2rem;
+        margin-bottom: 1rem;
 
         img {
             width: 70px;
