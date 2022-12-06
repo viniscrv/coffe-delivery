@@ -1,9 +1,14 @@
 import { CartContainer, ClientCartContainer } from "./styles";
 import coffeExemple from "../../../../assets/coffes/tradicional.png"
 import { Minus, Plus, Trash } from "phosphor-react";
+import { useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
 
 
 export function ClientCart() {
+
+    const { total } = useContext(CartContext);
+
     return (
         <ClientCartContainer>
 
@@ -41,7 +46,7 @@ export function ClientCart() {
                     </div>
                     <div className="totalPrice">
                         <p>Total</p>
-                        <span>R$ 33,70</span>
+                        <span>R$ {total}</span>
                     </div>
 
                     <button>CONFIRMAR PEDIDO</button>

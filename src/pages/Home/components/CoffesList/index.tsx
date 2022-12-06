@@ -11,7 +11,7 @@ export function CoffesList() {
                 { coffes.map( (coffe) => {
                     return (
                         <CoffeCard 
-                        key={coffe.title}
+                        key={coffe.id}
                         image={coffe.image}
                         category={coffe.category}
                         title={coffe.title}

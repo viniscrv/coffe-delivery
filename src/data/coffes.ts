@@ -15,6 +15,7 @@ import mocaccino from "../assets/coffes/mocaccino.png";
 
 export const coffes = [
     {
+    id: "1",
     image: `${tradicional}`,
     category: ["TRADICIONAL"],
     title: "Expresso Tradicional",
@@ -22,6 +23,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "2",
     image: `${americano}`,
     category: ["TRADICIONAL"],
     title: "Expresso Americano",
@@ -29,6 +31,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "3",
     image: `${arabe}`,
     category: ["ESPECIAL"],
     title: "Árabe",
@@ -36,6 +39,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "4",
     image: `${cafeComLeite}`,
     category: ["TRADICIONAL", "COM LEITE"],
     title: "Café com Leite",
@@ -43,6 +47,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "5",
     image: `${capuccino}`,
     category: ["TRADICIONAL", "COM LEITE"],
     title: "Capuccino",
@@ -50,6 +55,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "6",
     image: `${chocolateQuente}`,
     category: ["ESPECIAL", "COM LEITE"],
     title: "Chocolate Quente",
@@ -57,6 +63,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "7",
     image: `${cremoso}`,
     category: ["TRADICIONAL"],
     title: "Expresso Cremoso",
@@ -64,6 +71,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "8",
     image: `${cubano}`,
     category: ["ALCOÓLICO", "ESPECIAL", "GELADO"],
     title: "Cubano",
@@ -71,6 +79,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "9",
     image: `${gelado}`,
     category: ["GELADO", "TRADICIONAL"],
     title: "Expresso Gelado",
@@ -78,6 +87,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "10",
     image: `${havaiano}`,
     category: ["TRADICIONAL"],
     title: "Havaiano",
@@ -85,13 +95,16 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "11",
     image: `${irlandes}`,
     category: ["ALCOÓLICO", "ESPECIAL"],
     title: "Irlandês",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     price: 9.90
     },
+    /* 
     {
+    id: "12",
     image: `${latte}`,
     category: ["TRADICIONAL", "COM LEITE"],
     title: "Expresso Tradicional",
@@ -99,6 +112,7 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "13",
     image: `${macchiato}`,
     category: ["TRADICIONAL", "COM LEITE"],
     title: "Macchiato",
@@ -106,10 +120,11 @@ export const coffes = [
     price: 9.90
     },
     {
+    id: "14",
     image: `${mocaccino}`,
     category: ["TRADICIONAL", "COM LEITE"],
     title: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
     price: 9.90
-    },
+    }, */
 ]
