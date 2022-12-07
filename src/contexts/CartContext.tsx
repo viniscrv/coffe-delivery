@@ -2,8 +2,11 @@ import { createContext, ReactNode, useState,  } from "react";
 
 interface CartContextType {
     total: number;
-    productsInCart: any;
-    handleAddNewProductAtCart: ({}: any) => void;
+    totalQuantity: number;
+    productsInCart: productInCart[];
+    addNewProductAtCart: ({}: productInCart) => void;
+    sumProductQuantity: (id: string) => void;
+    subProductQuantity: (id: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -12,41 +15,79 @@ interface CartContextProviderProps {
     children: ReactNode;
 }
 
+export interface productInCart {
+    id: string;
+    image: string;
+    title: string;
+    quantity: number;
+    price: number;
+    priceTotal: number;
+}
+
 export function CartContextProvider({children}: CartContextProviderProps) {
 
     const [total, setTotal] = useState(0);
-    const [productsInCart, setProductsInCart] = useState<any>([]);
+    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [productsInCart, setProductsInCart] = useState<productInCart[]>([]);
 
-    interface productAddedProps {
-        id: string;
-        priceTotal: number;
-        quantity: number;
-        image: string;
-        title: string;
-        price: number;
-    }
-
-    function handleAddNewProductAtCart({id, priceTotal, quantity, image, title, price}: productAddedProps) {
+    function addNewProductAtCart({id, image, title, quantity, price, priceTotal}: productInCart) {
 
         setTotal(state => state + priceTotal);
-        console.log(total);
-        const productAdded: productAddedProps = {
+        setTotalQuantity(state => state + quantity);
+        // console.log(total);
+
+        const productAdded: productInCart = {
             id: id,
-            priceTotal: priceTotal,
             image: image,
             title: title,
-            price: Number((price*quantity).toFixed(2)),
             quantity: quantity,
+            price: price,
+            priceTotal: priceTotal,
         }
-            
-        setProductsInCart([...productsInCart, productAdded]);
+
+        setProductsInCart(state => [...state, productAdded]);
+
+        console.log(productsInCart);
+    }
+
+    function sumProductQuantity(id: string) {
+
+        setProductsInCart((state) => state.map((product) => {
+            if(product.id === id) {
+                if(product.quantity < 20){
+                    setTotal(state => state + product.priceTotal);
+                    setTotalQuantity(state => state + 1);
+                    return {...product, quantity: product.quantity + 1};
+                }
+                return product;
+            } 
+            return product;
+        }));
+    }
+
+    function subProductQuantity(id: string) {
+
+        setProductsInCart((state) => state.map((product) => {
+            if(product.id === id) {
+                if (product.quantity > 1){
+                    setTotal(state => state - product.price);
+                    setTotalQuantity(state => state - 1);
+                    return {...product, quantity: product.quantity - 1};
+                }
+                return product;
+            } 
+            return product;
+        }));
     }
 
     return (
        <CartContext.Provider value={{
-        handleAddNewProductAtCart, 
+        addNewProductAtCart, 
+        sumProductQuantity,
+        subProductQuantity,
         productsInCart,
         total, 
+        totalQuantity,
         }}>
             {children}
        </CartContext.Provider> 

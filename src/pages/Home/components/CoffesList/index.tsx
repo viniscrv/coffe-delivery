@@ -12,6 +12,7 @@ export function CoffesList() {
                     return (
                         <CoffeCard 
                         key={coffe.id}
+                        id={coffe.id}
                         image={coffe.image}
                         category={coffe.category}
                         title={coffe.title}

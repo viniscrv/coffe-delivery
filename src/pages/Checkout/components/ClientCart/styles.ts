@@ -37,8 +37,9 @@ export const CartContainer = styled.div`
                     .quantity-control {
                     background-color: ${props => props.theme["base-button"]};
                     color: ${props => props.theme["base-title"]};
-                    width: 5rem;
+                    width: 5.5rem;
                     display: flex;
+                    justify-content: space-around;
                     flex-direction: row;
                     padding: .6rem;
                     border-radius: 8px;

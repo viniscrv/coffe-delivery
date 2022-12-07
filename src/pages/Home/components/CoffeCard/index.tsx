@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 
 interface CoffeCardProps {
-    id: string
+    id: string;
     image: string;
     category: string[];
     title: string;
@@ -14,7 +14,7 @@ interface CoffeCardProps {
 
 export function CoffeCard( {id, image, category, title, description, price} : CoffeCardProps) {
 
-    const { handleAddNewProductAtCart } = useContext(CartContext);
+    const { addNewProductAtCart } = useContext(CartContext);
     
     const [quantity, setQuantity] = useState(1);
 
@@ -29,14 +29,14 @@ export function CoffeCard( {id, image, category, title, description, price} : Co
             setQuantity(state => state - 1);
         }
     }
+    
+    let priceTotal = Number((price*quantity).toFixed(2));
 
-    function submitProductsAtCart() {
+    function handleNewProductsAtCart() {
 
-        handleAddNewProductAtCart({id, priceTotal, quantity, image, title, price});
+        addNewProductAtCart({id, image, title, quantity, price, priceTotal});
         setQuantity(1);
     }
-
-    let priceTotal = Number((price*quantity).toFixed(2));
 
     return(
         <CoffeCardContainer>
@@ -60,7 +60,7 @@ export function CoffeCard( {id, image, category, title, description, price} : Co
 
                 <button 
                     className="btn-cart"
-                    onClick={submitProductsAtCart}
+                    onClick={handleNewProductsAtCart}
                     >
                     <ShoppingCart weight="fill" size={18}/>
                 </button>
