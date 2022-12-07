@@ -20,7 +20,6 @@ export const CartContainer = styled.div`
         display: flex;
         justify-content: space-between;
         gap: 1.2rem;
-        margin-bottom: 1rem;
 
         img {
             width: 70px;
@@ -38,7 +37,7 @@ export const CartContainer = styled.div`
                     .quantity-control {
                     background-color: ${props => props.theme["base-button"]};
                     color: ${props => props.theme["base-title"]};
-                    width: 4.5rem;
+                    width: 5rem;
                     display: flex;
                     flex-direction: row;
                     padding: .6rem;
@@ -57,8 +56,8 @@ export const CartContainer = styled.div`
                         font-size: 0.75rem;
                         display: flex;
                         align-items: center;
-                        padding: .6rem ;
                         gap: .2rem;
+                        padding: .6rem ;
                         border: 0;
                         border-radius: 8px;
                         cursor: pointer;
@@ -72,6 +71,11 @@ export const CartContainer = styled.div`
         span {
             font-weight: bold;
         }
+    }
+    .CartProducts + .CartProducts {
+        margin: 1rem 0;
+        padding-top: 1rem;
+        border-top: 1px solid ${props => props.theme["base-button"]} ;
     }
 
     .confirmOrder {
@@ -93,14 +97,16 @@ export const CartContainer = styled.div`
             color: ${props => props.theme["base-subtitle"]};
         }
 
-        button {
-            margin-top: 1.25rem;
+        .btn-confirm {
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
             padding: 1rem;
-            border-radius: 6px;
+            margin-top: 1.25rem;
             border: 0;
+            border-radius: 6px;
             background-color: ${props => props.theme["yellow"]};
             color: ${props => props.theme["white"]};
-            font-weight: bold;
             cursor: pointer;
         }
     }

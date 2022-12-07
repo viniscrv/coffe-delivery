@@ -1,7 +1,8 @@
 import { CartContainer, ClientCartContainer } from "./styles";
 import { Minus, Plus, Trash } from "phosphor-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
+import { NavLink } from "react-router-dom";
 
 
 export function ClientCart() {
@@ -53,7 +54,7 @@ export function ClientCart() {
                         <span>R$ {total}</span>
                     </div>
 
-                    <button>CONFIRMAR PEDIDO</button>
+                    <NavLink to="/success" className="btn-confirm">CONFIRMAR PEDIDO</NavLink>
                 </div>
             </CartContainer>
 

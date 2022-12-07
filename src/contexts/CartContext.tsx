@@ -8,7 +8,6 @@ interface CartContextType {
 
 export const CartContext = createContext({} as CartContextType);
 
-
 interface CartContextProviderProps {
     children: ReactNode;
 }
@@ -16,9 +15,7 @@ interface CartContextProviderProps {
 export function CartContextProvider({children}: CartContextProviderProps) {
 
     const [total, setTotal] = useState(0);
-
     const [productsInCart, setProductsInCart] = useState<any>([]);
-
 
     interface productAddedProps {
         id: string;
@@ -38,10 +35,11 @@ export function CartContextProvider({children}: CartContextProviderProps) {
             priceTotal: priceTotal,
             image: image,
             title: title,
-            price: price,
+            price: Number((price*quantity).toFixed(2)),
             quantity: quantity,
         }
-        setProductsInCart([...productsInCart, productAdded]) 
+            
+        setProductsInCart([...productsInCart, productAdded]);
     }
 
     return (
