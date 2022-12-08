@@ -6,9 +6,8 @@ import { AddressField, CartContainer, CheckoutContainer, ClientCartContainer, Cl
 
 export function Checkout() {
 
-    const { total, productsInCart, sumProductQuantity, subProductQuantity, totalQuantity, fillDeliveryData, removeProductAtCart } = useContext(CartContext);
+    const { total, productsInCart, sumProductQuantity, subProductQuantity, fillDeliveryData, removeProductAtCart } = useContext(CartContext);
 
-    const totalItems = (totalQuantity*9.90).toFixed(2);
     const deliveryFee = 3.70;
     const totalPurchase = (total + deliveryFee).toFixed(2);
 
@@ -146,11 +145,11 @@ export function Checkout() {
                     <div className="confirmOrder">
                         <div>
                             <p>Total de itens</p>
-                            <span>R$ {totalItems}</span>
+                            <span>R$ {total.toFixed(2)}</span>
                         </div>
                         <div>
                             <p>Entrega</p>
-                            <span>R$ {deliveryFee}</span>
+                            <span>R$ {deliveryFee.toFixed(2)}</span>
                         </div>
                         <div className="totalPrice">
                             <p>Total</p>

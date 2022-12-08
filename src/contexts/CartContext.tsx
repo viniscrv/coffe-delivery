@@ -48,8 +48,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
 
         setTotal(state => state + priceTotal);
         setTotalQuantity(state => state + quantity);
-        // console.log(total);
-
+        
         const productAdded: productInCart = {
             id: id,
             image: image,
@@ -60,8 +59,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         }
 
         setProductsInCart(state => [...state, productAdded]);
-
-        console.log(productsInCart);
     }
 
     function removeProductAtCart(id: string) {
@@ -69,6 +66,8 @@ export function CartContextProvider({children}: CartContextProviderProps) {
             if (product.id !== id) {
                 return product;
             }
+            setTotal(state => state - product.priceTotal);
+            setTotalQuantity(state => state - product.quantity);
         }));
     }
 
@@ -77,9 +76,9 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         setProductsInCart((state) => state.map((product) => {
             if(product.id === id) {
                 if(product.quantity < 20){
-                    setTotal(state => state + product.priceTotal);
+                    setTotal(state => state + product.price);
                     setTotalQuantity(state => state + 1);
-                    return {...product, quantity: product.quantity + 1};
+                    return {...product, quantity: product.quantity + 1, priceTotal: product.priceTotal + product.price};
                 }
                 return product;
             } 
@@ -94,12 +93,18 @@ export function CartContextProvider({children}: CartContextProviderProps) {
                 if (product.quantity > 1){
                     setTotal(state => state - product.price);
                     setTotalQuantity(state => state - 1);
-                    return {...product, quantity: product.quantity - 1};
+                    return {...product, quantity: product.quantity - 1, priceTotal: product.priceTotal - product.price};
                 }
                 return product;
             } 
             return product;
         }));
+    }
+
+
+    function log() {
+        // console.log(productsInCart);
+        console.log(totalQuantity);
     }
 
     const [ deliveryData, setDeliveryData ] = useState<deliveryDataType | any>();
@@ -133,6 +138,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         totalQuantity,
         }}>
             {children}
+            <button onClick={log}>log</button>
        </CartContext.Provider> 
     );
 }
