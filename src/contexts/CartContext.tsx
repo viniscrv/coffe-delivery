@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
+import { useFormContext } from "react-hook-form/dist/useFormContext";
+import { useNavigate } from "react-router-dom";
 
 interface CartContextType {
     total: number;
@@ -11,6 +13,7 @@ interface CartContextType {
     subProductQuantity: (id: string) => void;
     fillDeliveryData: (data: deliveryDataType) => void;
     clearCart: () => void;
+    setDeliveryData: React.Dispatch<any>
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -108,22 +111,13 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         setProductsInCart([]);
     }
 
-    const [ deliveryData, setDeliveryData ] = useState<deliveryDataType | any>();
+    const [ deliveryData, setDeliveryData ] = useState({} as deliveryDataType);
 
-    function fillDeliveryData({cep, address, number, complement, district, city, state, formPayment}: deliveryDataType) {
+    const navigate = useNavigate();
 
-        setDeliveryData({
-            cep: cep,
-            address: address,
-            number: number,
-            complement: complement,
-            district: district,
-            city: city,
-            state: state,
-            formPayment: formPayment,
-        });
-
-        console.log(deliveryData);
+    function fillDeliveryData(data: deliveryDataType) {
+       
+        setDeliveryData(data);
     }
 
     return (
@@ -134,6 +128,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         fillDeliveryData,
         removeProductAtCart,
         clearCart,
+        setDeliveryData,
         deliveryData,
         productsInCart,
         total, 

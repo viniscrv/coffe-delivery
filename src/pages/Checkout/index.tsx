@@ -1,12 +1,35 @@
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money, Minus, Plus, Trash } from "phosphor-react";
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { CartContext, productInCart } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
+import { CartContext, deliveryDataType, productInCart } from "../../contexts/CartContext";
 import { AddressField, CartContainer, CheckoutContainer, ClientCartContainer, ClientDataContainer, PaymentField } from "./styles";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+interface FormDeliveryValidation {
+    cep: string;
+    address: string;
+    number: string;
+    complement: string;
+    district: string;
+    city: string;
+    state: string;
+}
+
+const schema = yup.object({
+    cep: yup.string().required(),
+    address: yup.string().required(),
+    number: yup.string().required(),
+    complement: yup.string(),
+    district: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+}).required();
 
 export function Checkout() {
 
-    const { total, productsInCart, sumProductQuantity, subProductQuantity, fillDeliveryData, removeProductAtCart } = useContext(CartContext);
+    const { total, productsInCart, sumProductQuantity, subProductQuantity, removeProductAtCart, fillDeliveryData } = useContext(CartContext);
 
     const deliveryFee = 3.70;
     const totalPurchase = (total + deliveryFee).toFixed(2);
@@ -22,28 +45,19 @@ export function Checkout() {
     function handleAddProductQuantity(id: string) {
         sumProductQuantity(id);
     }
-
-    const [cep, setCep] = useState("");
-    const [address, setAddress] = useState("");
-    const [number, setNumber] = useState("");
-    const [complement, setComplement] = useState("");
-    const [district, setDistrict] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-
+            
     const [formPayment, setFormPayment] = useState("");
 
-    function handleSendDeliveryData(){
-        fillDeliveryData({
-            cep: cep,
-            address: address,
-            number: number,
-            complement: complement,
-            district: district,
-            city: city,
-            state: state,
-            formPayment: formPayment,
-        });
+    const { register, handleSubmit } = useForm<FormDeliveryValidation>({
+        resolver: yupResolver(schema)
+    });
+
+    const navigate = useNavigate();
+
+    function handleSendDeliveryData(data: FormDeliveryValidation) {
+
+        fillDeliveryData({...data, formPayment: formPayment});
+        navigate("/success");
     }
 
     return (
@@ -61,19 +75,19 @@ export function Checkout() {
                         </div>
                     </header>
 
-                    <form>
+                    <form id="address-form" onSubmit={handleSubmit(handleSendDeliveryData)}>
                         <div className="address">
-                            <input placeholder="CEP" className="cep" onChange={(e) => setCep(e.target.value)} value={cep} />
-                            <input type="text" placeholder="Rua" onChange={(e) => setAddress(e.target.value)} value={address} />
+                            <input placeholder="CEP*" className="cep" {...register("cep")} />
+                            <input type="text" placeholder="Rua*" {...register("address")} />
                         </div>
                         <div className="complements">
-                            <input type="text" placeholder="Número" onChange={(e) => setNumber(e.target.value)} value={number} />
-                            <input type="text" placeholder="Complemento" onChange={(e) => setComplement(e.target.value)} value={complement} />
+                            <input type="text" placeholder="Número*" {...register("number")} />
+                            <input type="text" placeholder="Complemento" {...register("complement")} />
                         </div> 
                         <div className="add">
-                            <input type="text" placeholder="Bairro" onChange={(e) => setDistrict(e.target.value)} value={district} />
-                            <input type="text" placeholder="Cidade" onChange={(e) => setCity(e.target.value)} value={city} />
-                            <input type="text" placeholder="UF" onChange={(e) => setState(e.target.value)} value={state} />
+                            <input type="text" placeholder="Bairro*" {...register("district")} />
+                            <input type="text" placeholder="Cidade*" {...register("city")} />
+                            <input type="text" placeholder="UF*" {...register("state")} />
                         </div>
                     </form>
                 </AddressField>
@@ -156,9 +170,7 @@ export function Checkout() {
                             <span>R$ {totalPurchase}</span>
                         </div>
 
-                        <NavLink to="/success" >
-                            <button className="btn-confirm" onClick={handleSendDeliveryData}>CONFIRMAR PEDIDO</button>
-                        </NavLink>
+                        <button className="btn-confirm" form="address-form">CONFIRMAR PEDIDO</button>
                     </div>
                 </CartContainer>
             </ClientCartContainer>
