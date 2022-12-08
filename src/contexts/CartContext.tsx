@@ -6,6 +6,7 @@ interface CartContextType {
     productsInCart: productInCart[];
     deliveryData: deliveryDataType;
     addNewProductAtCart: ({}: productInCart) => void;
+    removeProductAtCart: (id: string) => void;
     sumProductQuantity: (id: string) => void;
     subProductQuantity: (id: string) => void;
     fillDeliveryData: (data: deliveryDataType) => void;
@@ -26,7 +27,7 @@ export interface productInCart {
     priceTotal: number;
 }
 
-interface deliveryDataType {
+export interface deliveryDataType {
     cep: string;
     address: string;
     number: string;
@@ -61,6 +62,14 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         setProductsInCart(state => [...state, productAdded]);
 
         console.log(productsInCart);
+    }
+
+    function removeProductAtCart(id: string) {
+        setProductsInCart((state) => state.filter((product) => {
+            if (product.id !== id) {
+                return product;
+            }
+        }));
     }
 
     function sumProductQuantity(id: string) {
@@ -107,6 +116,8 @@ export function CartContextProvider({children}: CartContextProviderProps) {
             state: state,
             formPayment: formPayment,
         });
+
+        console.log(deliveryData);
     }
 
     return (
@@ -115,6 +126,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         sumProductQuantity,
         subProductQuantity,
         fillDeliveryData,
+        removeProductAtCart,
         deliveryData,
         productsInCart,
         total, 

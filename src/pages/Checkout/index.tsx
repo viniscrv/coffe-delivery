@@ -6,11 +6,15 @@ import { AddressField, CartContainer, CheckoutContainer, ClientCartContainer, Cl
 
 export function Checkout() {
 
-    const { total, productsInCart, sumProductQuantity, subProductQuantity, totalQuantity, fillDeliveryData } = useContext(CartContext);
+    const { total, productsInCart, sumProductQuantity, subProductQuantity, totalQuantity, fillDeliveryData, removeProductAtCart } = useContext(CartContext);
 
     const totalItems = (totalQuantity*9.90).toFixed(2);
     const deliveryFee = 3.70;
     const totalPurchase = (total + deliveryFee).toFixed(2);
+
+    function handleRemoveProductatCart(id: string) {
+        removeProductAtCart(id);
+    }
 
     function handleSubProductQuantity(id: string) {
         subProductQuantity(id);
@@ -128,7 +132,7 @@ export function Checkout() {
                                                     <span>{product.quantity}</span>
                                                 <button onClick={() => handleAddProductQuantity(product.id)}><Plus /></button>
                                             </div>
-                                            <button className="remove" >
+                                            <button className="remove" onClick={() => handleRemoveProductatCart(product.id)} >
                                                 <span><Trash size={16}/></span>
                                                 REMOVER
                                             </button>
