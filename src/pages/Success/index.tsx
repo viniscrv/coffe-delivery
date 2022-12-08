@@ -1,9 +1,14 @@
 import { MapPin } from "phosphor-react"
+import { useContext } from "react"
 import illustration from "../../assets/illustration.png"
+import { CartContext } from "../../contexts/CartContext"
 import { SuccessContainer } from "./styles"
 
 
 export function Success() {
+
+    const { deliveryData } = useContext(CartContext);
+
     return (
         <SuccessContainer>
             <header>
@@ -15,8 +20,8 @@ export function Success() {
                     <div>
                         <span><MapPin size={18}/></span>
                         <div>
-                            <p>Entrega em <strong>Rua João Daniel Martinelli, 102</strong></p>
-                            <p>Farrapos - Porto Alegre, RS</p>
+                            <p>Entrega em <strong>{deliveryData.address}</strong></p>
+                            <p>{deliveryData.district} - {deliveryData.city}, {deliveryData.state}</p>
                         </div>
                     </div>
                     <div>
@@ -30,7 +35,7 @@ export function Success() {
                         <span><MapPin size={18}/></span>
                         <div>
                             <p>Pagamento na entrega</p>
-                            <p><strong>Cartão de Crédito</strong></p>
+                            <p><strong>{deliveryData.formPayment}</strong></p>
                         </div>
                     </div>
                 </div>
