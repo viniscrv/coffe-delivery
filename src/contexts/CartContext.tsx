@@ -10,6 +10,7 @@ interface CartContextType {
     sumProductQuantity: (id: string) => void;
     subProductQuantity: (id: string) => void;
     fillDeliveryData: (data: deliveryDataType) => void;
+    clearCart: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -101,6 +102,12 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         }));
     }
 
+    function clearCart() {
+        setTotal(0);
+        setTotalQuantity(0);
+        setProductsInCart([]);
+    }
+
     const [ deliveryData, setDeliveryData ] = useState<deliveryDataType | any>();
 
     function fillDeliveryData({cep, address, number, complement, district, city, state, formPayment}: deliveryDataType) {
@@ -126,6 +133,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         subProductQuantity,
         fillDeliveryData,
         removeProductAtCart,
+        clearCart,
         deliveryData,
         productsInCart,
         total, 

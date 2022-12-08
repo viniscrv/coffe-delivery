@@ -1,5 +1,5 @@
 import { MapPin } from "phosphor-react"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import illustration from "../../assets/illustration.png"
 import { CartContext } from "../../contexts/CartContext"
 import { SuccessContainer } from "./styles"
@@ -7,7 +7,11 @@ import { SuccessContainer } from "./styles"
 
 export function Success() {
 
-    const { deliveryData } = useContext(CartContext);
+    const { deliveryData, clearCart } = useContext(CartContext);
+
+    useEffect(() => {
+        clearCart();
+    },[]);
 
     return (
         <SuccessContainer>
