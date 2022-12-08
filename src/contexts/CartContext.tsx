@@ -101,12 +101,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         }));
     }
 
-
-    function log() {
-        // console.log(productsInCart);
-        console.log(totalQuantity);
-    }
-
     const [ deliveryData, setDeliveryData ] = useState<deliveryDataType | any>();
 
     function fillDeliveryData({cep, address, number, complement, district, city, state, formPayment}: deliveryDataType) {
@@ -138,7 +132,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         totalQuantity,
         }}>
             {children}
-            <button onClick={log}>log</button>
        </CartContext.Provider> 
     );
 }

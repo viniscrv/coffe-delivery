@@ -40,6 +40,18 @@ div {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        position: relative;
+
+        .badge {
+            background-color: ${props => props.theme["yellow-dark"]};
+            color: ${props => props.theme["white"]};
+            padding: .1rem .4rem;
+            border-radius: 50%;
+            position: absolute;
+            top: -.5rem;
+            right: -.5rem;
+            font-size: .9rem;
+        }
     }
 }
 `
