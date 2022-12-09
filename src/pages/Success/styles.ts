@@ -34,7 +34,7 @@ export const SuccessContainer = styled.div`
             div {
                 display: flex;
                 align-items: center;
-                span {
+                /* span {
                     color: ${props => props.theme["white"]};
                     background-color: ${props => props.theme["purple"]};
                     display: flex;
@@ -42,7 +42,7 @@ export const SuccessContainer = styled.div`
                     justify-content: center;
                     border-radius: 100%;
                     padding: .6rem;
-                }
+                } */
                 div {
                     display: flex;
                     flex-direction: column;
@@ -63,4 +63,24 @@ export const SuccessContainer = styled.div`
             grid-column-end: end;
         }
     }
+`
+
+const COLORS = {
+    yellowDark: "yellow-dark",
+    yellow: "yellow",
+    purple: "purple"
+} as const
+
+interface IconProps {
+    color: keyof typeof COLORS;
+}
+
+export const IconsSuccess = styled.span<IconProps>`
+    color: ${props => props.theme["white"]};
+    background-color: ${props => props.theme[COLORS[props.color]]};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: .6rem;
 `

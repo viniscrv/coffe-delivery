@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CoffeCardContainer = styled.div`
+export const CoffeeCardContainer = styled.div`
 
     background-color: ${props => props.theme["base-card"]};
     width: 16rem;

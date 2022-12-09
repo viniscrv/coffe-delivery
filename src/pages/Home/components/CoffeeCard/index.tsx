@@ -1,9 +1,9 @@
 import { Plus, Minus, ShoppingCart } from "phosphor-react";
-import { CoffeCardContainer } from "./style";
+import { CoffeeCardContainer } from "./style";
 import { useContext, useState } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 
-interface CoffeCardProps {
+interface CoffeeCardProps {
     id: string;
     image: string;
     category: string[];
@@ -12,7 +12,7 @@ interface CoffeCardProps {
     price: number;
 }
 
-export function CoffeCard( {id, image, category, title, description, price} : CoffeCardProps) {
+export function CoffeeCard( {id, image, category, title, description, price} : CoffeeCardProps) {
 
     const { addNewProductAtCart } = useContext(CartContext);
     
@@ -39,7 +39,7 @@ export function CoffeCard( {id, image, category, title, description, price} : Co
     }
 
     return(
-        <CoffeCardContainer>
+        <CoffeeCardContainer>
             <img src={image} />
             <div>
                 {category.map(item => {
@@ -65,6 +65,6 @@ export function CoffeCard( {id, image, category, title, description, price} : Co
                     <ShoppingCart weight="fill" size={18}/>
                 </button>
             </footer>
-        </CoffeCardContainer>
+        </CoffeeCardContainer>
     );
 }

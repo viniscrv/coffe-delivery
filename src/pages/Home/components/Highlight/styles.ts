@@ -21,23 +21,36 @@ export const HighlightContainer = styled.main`
             margin-top: 3.4rem;
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
             gap: 2rem;
-            max-width: 38.75rem;
-
+            max-width: 37.75rem;
             div {
                 display: flex;
                 gap: .4rem;
                 color: ${props => props.theme["base-text"]};
-                span {
-                    color: ${props => props.theme["white"]};
-                    background-color: ${props => props.theme["purple"]};
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 100%;
-                    padding: .3rem;
-                }
+                min-width: 17.375rem;
             }
         }
     }
+`
+
+const COLORS = {
+    yellowDark: "yellow-dark",
+    gray: "base-text",
+    yellow: "yellow",
+    purple: "purple"
+} as const
+
+interface IconProps {
+    color: keyof typeof COLORS;
+}
+
+export const IconsHighlight = styled.span<IconProps>`
+    color: ${props => props.theme["white"]};
+    background-color: ${props => props.theme[COLORS[props.color]]};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: .3rem;
 `

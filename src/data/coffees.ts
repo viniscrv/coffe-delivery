@@ -13,7 +13,7 @@ import latte from "../assets/coffes/latte.png";
 import macchiato from "../assets/coffes/macchiato.png";
 import mocaccino from "../assets/coffes/mocaccino.png";
 
-export const coffes = [
+export const coffees = [
     {
     id: "1",
     image: `${tradicional}`,

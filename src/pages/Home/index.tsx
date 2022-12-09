@@ -1,11 +1,11 @@
 import { Highlight } from "./components/Highlight";
-import { CoffesList } from "./components/CoffesList";
+import { CoffeesList } from "./components/CoffeesList";
 
 export function Home() {
     return (
         <div>
             <Highlight/>
-            <CoffesList/>
+            <CoffeesList/>
         </div>
     );
 }
