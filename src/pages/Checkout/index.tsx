@@ -60,6 +60,8 @@ export function Checkout() {
         navigate("/success");
     }
 
+    const cartIsEmpty = productsInCart.length < 1;
+
     return (
         <CheckoutContainer>
 
@@ -132,30 +134,38 @@ export function Checkout() {
             <ClientCartContainer>
                 <h2>Cafés selecionados</h2>
                 <CartContainer>
-                    {productsInCart.map((product: productInCart) => {
-                        return (
-                            <div className="CartProducts" key={product.title}>
-                                <div>
-                                    <img src={product.image} />
-                                    <div className="product">
-                                        {product.title}
-                                        <div>
-                                            <div className="quantity-control">
-                                                <button onClick={() => handleSubProductQuantity(product.id)}><Minus /></button>
-                                                    <span>{product.quantity}</span>
-                                                <button onClick={() => handleAddProductQuantity(product.id)}><Plus /></button>
+                    {cartIsEmpty ? (
+                        <div className="cart-empty">
+                            <h3>Seu carrinho está vazio</h3>
+                            <p>Adicione algum item para prosseguir</p>
+                        </div>
+                    ) : (
+                        productsInCart.map((product: productInCart) => {
+                            return (
+                                <div className="CartProducts" key={product.title}>
+                                    <div>
+                                        <img src={product.image} />
+                                        <div className="product">
+                                            {product.title}
+                                            <div>
+                                                <div className="quantity-control">
+                                                    <button onClick={() => handleSubProductQuantity(product.id)}><Minus /></button>
+                                                        <span>{product.quantity}</span>
+                                                    <button onClick={() => handleAddProductQuantity(product.id)}><Plus /></button>
+                                                </div>
+                                                <button className="remove" onClick={() => handleRemoveProductatCart(product.id)} >
+                                                    <span><Trash size={18}/></span>
+                                                    REMOVER
+                                                </button>
                                             </div>
-                                            <button className="remove" onClick={() => handleRemoveProductatCart(product.id)} >
-                                                <span><Trash size={18}/></span>
-                                                REMOVER
-                                            </button>
                                         </div>
                                     </div>
+                                    <span>R$ {product.price}</span>
                                 </div>
-                                <span>R$ {product.price}</span>
-                            </div>
-                        );
-                    })}
+                            );
+                        })
+                    )}
+                    
                     <div className="confirmOrder">
                         <div>
                             <p>Total de itens</p>
@@ -170,7 +180,7 @@ export function Checkout() {
                             <span>R$ {totalPurchase}</span>
                         </div>
 
-                        <button className="btn-confirm" form="address-form">CONFIRMAR PEDIDO</button>
+                        <button className="btn-confirm" form="address-form" disabled={cartIsEmpty}>CONFIRMAR PEDIDO</button>
                     </div>
                 </CartContainer>
             </ClientCartContainer>

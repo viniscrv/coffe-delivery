@@ -192,6 +192,15 @@ export const CartContainer = styled.div`
     border-radius: 6px 44px;
     display: flex;
     flex-direction: column;
+    .cart-empty {
+        h3 {
+            margin-bottom: .5rem;
+        }
+        p {
+            font-size: .95rem;
+            color: ${props => props.theme["base-label"]};
+        }
+    }
     .CartProducts {
         width: 100%;
         display: flex;
@@ -288,6 +297,11 @@ export const CartContainer = styled.div`
             background-color: ${props => props.theme["yellow"]};
             color: ${props => props.theme["white"]};
             cursor: pointer;
+
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
 
             &:focus {
                 box-shadow: 0 0 0 2px ${props => props.theme["yellow"]};
