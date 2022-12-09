@@ -122,6 +122,10 @@ export const PaymentField = styled.div`
                 color: ${props => props.theme["purple"]};
                 
             }
+
+            &:hover {
+                background-color: ${props => props.theme["base-hover"]};
+            }
         }
     }
 `
@@ -191,6 +195,9 @@ export const CartContainer = styled.div`
                         span {
                             color: ${props => props.theme["purple"]};
                         }
+                        &:hover {
+                            background-color: ${props => props.theme["base-hover"]};
+                        }
                     }
                 }
             }
@@ -235,9 +242,8 @@ export const CartContainer = styled.div`
             color: ${props => props.theme["white"]};
             cursor: pointer;
 
-            &:disabled {
-                opacity: 0.7;
-                cursor: not-allowed;
+            &:focus {
+                box-shadow: 0 0 0 2px ${props => props.theme["yellow"]};
             }
         }
     }

@@ -1,6 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import { useFormContext } from "react-hook-form/dist/useFormContext";
-import { useNavigate } from "react-router-dom";
 
 interface CartContextType {
     total: number;
@@ -13,7 +11,6 @@ interface CartContextType {
     subProductQuantity: (id: string) => void;
     fillDeliveryData: (data: deliveryDataType) => void;
     clearCart: () => void;
-    setDeliveryData: React.Dispatch<any>
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -50,9 +47,8 @@ export function CartContextProvider({children}: CartContextProviderProps) {
 
     function addNewProductAtCart({id, image, title, quantity, price, priceTotal}: productInCart) {
 
-        setTotal(state => state + priceTotal);
-        setTotalQuantity(state => state + quantity);
-        
+        let index = productsInCart.findIndex(product => product.id == id);
+
         const productAdded: productInCart = {
             id: id,
             image: image,
@@ -61,8 +57,11 @@ export function CartContextProvider({children}: CartContextProviderProps) {
             price: price,
             priceTotal: priceTotal,
         }
-
-        setProductsInCart(state => [...state, productAdded]);
+        if (index < 0){
+            setTotal(state => state + priceTotal);
+            setTotalQuantity(state => state + quantity);
+            setProductsInCart(state => [...state, productAdded]);
+        } 
     }
 
     function removeProductAtCart(id: string) {
@@ -113,8 +112,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
 
     const [ deliveryData, setDeliveryData ] = useState({} as deliveryDataType);
 
-    const navigate = useNavigate();
-
     function fillDeliveryData(data: deliveryDataType) {
        
         setDeliveryData(data);
@@ -128,7 +125,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         fillDeliveryData,
         removeProductAtCart,
         clearCart,
-        setDeliveryData,
         deliveryData,
         productsInCart,
         total, 

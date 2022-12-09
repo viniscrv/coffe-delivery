@@ -5,9 +5,14 @@ margin-top: 2rem;
 display: flex;
 justify-content: space-between;
 
-img {
-    max-height: 40px;
-    cursor: pointer;
+.link-logo{
+    img {
+        max-height: 40px;
+        cursor: pointer;
+    }
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 div {
@@ -51,6 +56,9 @@ div {
             top: -.5rem;
             right: -.5rem;
             font-size: .9rem;
+        }
+        &:focus {
+            box-shadow: 0 0 0 2px ${props => props.theme["yellow-dark"]};
         }
     }
 }

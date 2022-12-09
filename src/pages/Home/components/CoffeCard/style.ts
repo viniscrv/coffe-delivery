@@ -84,6 +84,10 @@ export const CoffeCardContainer = styled.div`
             align-items: center;
             justify-content: center;
             cursor: pointer;
+
+            &:hover {
+                background-color: ${props => props.theme["purple"]};
+            }
         }
     }
 `

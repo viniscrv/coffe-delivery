@@ -31,5 +31,10 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${props => props.theme["base-input"]};
         border: 2px solid ${props => props.theme["base-hover"]};
         border-radius: 4px;
+
+        &:focus {
+            box-shadow: none; 
+            border: 2px solid ${props => props.theme["yellow"]};;
+        }
     }
 `

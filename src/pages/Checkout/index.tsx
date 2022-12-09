@@ -146,7 +146,7 @@ export function Checkout() {
                                                 <button onClick={() => handleAddProductQuantity(product.id)}><Plus /></button>
                                             </div>
                                             <button className="remove" onClick={() => handleRemoveProductatCart(product.id)} >
-                                                <span><Trash size={16}/></span>
+                                                <span><Trash size={18}/></span>
                                                 REMOVER
                                             </button>
                                         </div>
