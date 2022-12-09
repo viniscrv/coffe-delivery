@@ -1,7 +1,7 @@
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money, Minus, Plus, Trash } from "phosphor-react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext, deliveryDataType, productInCart } from "../../contexts/CartContext";
+import { CartContext, productInCart } from "../../contexts/CartContext";
 import { AddressField, CartContainer, CheckoutContainer, ClientCartContainer, ClientDataContainer, PaymentField } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';

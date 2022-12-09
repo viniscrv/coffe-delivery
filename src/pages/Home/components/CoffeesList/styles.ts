@@ -13,5 +13,11 @@ export const CoffeesListContainer = styled.div`
         flex-wrap: wrap;
         justify-content: space-between;
     }
+
+    @media (max-width: 768px) {
+        div {
+            justify-content: center;
+        }
+    }
 `
 

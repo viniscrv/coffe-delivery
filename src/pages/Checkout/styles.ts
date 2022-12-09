@@ -5,6 +5,11 @@ export const CheckoutContainer = styled.div`
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
 `
 
 export const ClientDataContainer = styled.div`
@@ -13,6 +18,10 @@ export const ClientDataContainer = styled.div`
         font-size: 1.125rem;
         color: ${props => props.theme["base-subtitle"]};
         margin-bottom: 1em;
+    }
+
+    @media (max-width: 768px) {
+        width: 90vw;
     }
 `
 
@@ -62,6 +71,34 @@ export const AddressField = styled.div`
             display: grid;
             grid-template-columns: 1fr 1fr 10%;
             gap: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        form {
+            display: flex;
+            flex-direction: column;
+            input {
+                width: 100%;
+            }
+            .address {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .cep {
+                width: 100%;
+            }
+            }
+            .complements {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .add {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1rem;
+            }
         }
     }
 `
@@ -125,6 +162,16 @@ export const PaymentField = styled.div`
 
             &:hover {
                 background-color: ${props => props.theme["base-hover"]};
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .optionsPayment {
+            flex-direction: column;
+            align-items: center;
+            label {
+                width: 100%;
             }
         }
     }

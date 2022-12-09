@@ -34,15 +34,6 @@ export const SuccessContainer = styled.div`
             div {
                 display: flex;
                 align-items: center;
-                /* span {
-                    color: ${props => props.theme["white"]};
-                    background-color: ${props => props.theme["purple"]};
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 100%;
-                    padding: .6rem;
-                } */
                 div {
                     display: flex;
                     flex-direction: column;
@@ -62,6 +53,26 @@ export const SuccessContainer = styled.div`
         .illustration {
             grid-column-end: end;
         }
+    }
+
+    @media (max-width: 768px) {
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .delivery-info {
+                width: 90vw;
+                margin-bottom: 2rem;
+            }
+            .illustration {
+                text-align: center;
+                img {
+                    width: 95%;
+                }
+            }
+        }
+        
     }
 `
 

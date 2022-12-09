@@ -32,6 +32,19 @@ export const HighlightContainer = styled.main`
             }
         }
     }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        height: max-content;
+        align-items: center;
+        
+        .image {
+            margin: 2rem 0;
+            img {
+                width: 100%;
+            }
+        }
+    }
 `
 
 const COLORS = {

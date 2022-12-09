@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${props => props.theme.background};
         color: ${props => props.theme["base-text"]};
         -webkit-font-smoothing: antialiased;
-        margin: 0 14rem;
+        padding: 0 14rem;
     }
 
     body, input, textarea, button {
@@ -36,5 +36,19 @@ export const GlobalStyle = createGlobalStyle`
             box-shadow: none; 
             border: 2px solid ${props => props.theme["yellow"]};;
         }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 0 2rem;
+        }
+
+        body, input, textarea, button {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-size: .9rem;
+        }
+                
+    
     }
 `
