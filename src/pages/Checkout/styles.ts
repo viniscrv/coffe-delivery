@@ -309,4 +309,21 @@ export const CartContainer = styled.div`
         }
     }
 
+    @media (max-width: 768px){
+        .CartProducts {
+            div {
+                img {
+                    object-fit: contain;
+                }
+                .product {
+                    div {
+                        flex-direction: column;
+                        .quantity-control {
+                            min-width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 `
