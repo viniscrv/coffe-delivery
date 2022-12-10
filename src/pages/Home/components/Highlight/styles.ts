@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const HighlightContainer = styled.main`
     margin-top: 6rem;
-    height: 32rem;
+    height: max-content;
     display: flex;
     justify-content: space-between;
     .content {
+        margin-bottom: 2rem;
         h1 {
             font-family: "Baloo 2";
             font-size: 3.2rem;
@@ -35,7 +36,6 @@ export const HighlightContainer = styled.main`
 
     @media (max-width: 768px) {
         flex-direction: column;
-        height: max-content;
         align-items: center;
         
         .image {

@@ -11,7 +11,6 @@ export const CoffeesListContainer = styled.div`
     div {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     @media (max-width: 768px) {
