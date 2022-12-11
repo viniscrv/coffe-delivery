@@ -10,7 +10,9 @@ export const CoffeesListContainer = styled.div`
 
     div {
         display: flex;
+        justify-content: stretch;
         flex-wrap: wrap;
+        gap: 2em;
     }
 
     @media (max-width: 768px) {

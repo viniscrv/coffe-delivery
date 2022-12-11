@@ -8,9 +8,8 @@ export const CoffeeCardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 6% 18%;
-    gap: .8rem;
+    gap: .8rem !important;
     padding: 1rem 0;
-    margin: 0 2rem 1.5rem 0;
 
     img {
         width: min-content;
@@ -19,7 +18,7 @@ export const CoffeeCardContainer = styled.div`
     div {
         display: flex;
         flex-wrap: wrap;
-        gap: .4rem;
+        gap: .4rem !important;
         .tag {
         font-size: .7rem;
         font-weight: bold;

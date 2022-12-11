@@ -102,7 +102,6 @@ export const coffees = [
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     price: 9.90
     },
-    /* 
     {
     id: "12",
     image: `${latte}`,
@@ -126,5 +125,5 @@ export const coffees = [
     title: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
     price: 9.90
-    }, */
+    }
 ]
