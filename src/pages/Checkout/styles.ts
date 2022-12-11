@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CheckoutContainer = styled.div`
     margin: 2rem 0;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 40rem 1fr;
     gap: 2rem;
 
     @media (max-width: 768px) {
@@ -233,6 +233,7 @@ export const CartContainer = styled.div`
                         button {
                             background-color: ${props => props.theme["base-button"]};
                             color: ${props => props.theme["purple"]};
+                            line-height: 0;
                             border: 0;
                             cursor: pointer;
                         }

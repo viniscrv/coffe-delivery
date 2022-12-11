@@ -29,10 +29,14 @@ export const GlobalStyle = createGlobalStyle`
 
     input {
         padding: .6rem;
-        color: ${props => props.theme["base-label"]};
         background-color: ${props => props.theme["base-input"]};
+        color: ${props => props.theme["base-text"]};
         border: 2px solid ${props => props.theme["base-hover"]};
         border-radius: 4px;
+
+        &::placeholder {
+            color: ${props => props.theme["base-label"]};
+        }
 
         &:focus {
             box-shadow: none; 

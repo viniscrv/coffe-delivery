@@ -8,12 +8,12 @@ export const CoffeeCardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 6% 18%;
-    gap: .8rem !important;
+    gap: .5rem !important;
     padding: 1rem 0;
 
     img {
         width: min-content;
-        margin-top: -30px;
+        margin-top: -40px;
     }
     div {
         display: flex;
@@ -62,13 +62,17 @@ export const CoffeeCardContainer = styled.div`
         .quantity-control {
             background-color: ${props => props.theme["base-button"]};
             color: ${props => props.theme["base-title"]};
+            width: 5rem;
             padding: .4rem;
+            display: flex;
+            justify-content: space-between;
             border-radius: 8px;
             gap: .6rem;
             button {
                 background-color: ${props => props.theme["base-button"]};
                 color: ${props => props.theme["purple"]};
                 border: 0;
+                line-height: 0;
                 cursor: pointer;
             }
         }

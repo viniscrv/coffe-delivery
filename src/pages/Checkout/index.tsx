@@ -32,7 +32,12 @@ export function Checkout() {
     const { total, productsInCart, sumProductQuantity, subProductQuantity, removeProductAtCart, fillDeliveryData } = useContext(CartContext);
 
     const deliveryFee = 3.70;
-    const totalPurchase = (total + deliveryFee).toFixed(2);
+    const totalPurchase = (total + deliveryFee);
+    
+    const totalConverted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total);
+    const deliveryFeeConverted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(deliveryFee);
+    const totalPurchaseConverted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalPurchase);
+
 
     function handleRemoveProductatCart(id: string) {
         removeProductAtCart(id);
@@ -169,15 +174,15 @@ export function Checkout() {
                     <div className="confirmOrder">
                         <div>
                             <p>Total de itens</p>
-                            <span>R$ {total.toFixed(2)}</span>
+                            <span>{totalConverted}</span>
                         </div>
                         <div>
                             <p>Entrega</p>
-                            <span>R$ {deliveryFee.toFixed(2)}</span>
+                            <span>{deliveryFeeConverted}</span>
                         </div>
                         <div className="totalPrice">
                             <p>Total</p>
-                            <span>R$ {totalPurchase}</span>
+                            <span>{totalPurchaseConverted}</span>
                         </div>
 
                         <button className="btn-confirm" form="address-form" disabled={cartIsEmpty}>CONFIRMAR PEDIDO</button>
